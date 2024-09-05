@@ -2,7 +2,6 @@ import streamlit as st
 import pickle
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns  # For more stylish plots
 
 # Define the columns
 columns = ['Loan_ID', 'Gender', 'Married', 'Dependents', 'Education',
@@ -123,9 +122,9 @@ if submit_button:
             prediction = model.predict(input_df)
             st.success(f"Prediction: {prediction[0]}", icon="✅")
             
-            # Plot the prediction with a stylish design
+            # Plot the prediction with a stylish design using matplotlib
             fig, ax = plt.subplots(figsize=(8, 4))
-            sns.barplot(x=['Prediction'], y=[prediction[0]], palette='coolwarm', ax=ax)
+            ax.bar(['Prediction'], [prediction[0]], color='skyblue')
             ax.set_title('Prediction Result', fontsize=16, fontweight='bold')
             ax.set_ylabel('Value')
             ax.set_xlabel('')
